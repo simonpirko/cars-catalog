@@ -1,14 +1,15 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>View car</title>
+    <title>Cars Catalog User's cabinet</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="container">
+
     <div class="starter-template">
-        <h1>AUDI</h1>
+       <p th:text="'Welcome, '+${#httpServletRequest.remoteUser}+'!'"></p>
     </div>
 </div>
 <!--<div th:replace="fragments/footer :: footer"/>-->
