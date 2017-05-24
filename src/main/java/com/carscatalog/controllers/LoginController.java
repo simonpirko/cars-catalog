@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.Map;
 
 @Controller
-public class UserController {
+public class LoginController {
 
-	@GetMapping("/user")
-	public String user(Map<String, Object> model) {
-		model.put("title","Cars Catalog | User room");
-		return "/user";
+	@GetMapping("/login")
+	public String login(Map<String, Object> model) {
+		model.put("title", "Cars Catalog | Sign in");
+		return "/login";
 	}
 }

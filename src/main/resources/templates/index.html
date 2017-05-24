@@ -1,49 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <!--/*@thymesVar id="title" type="templates"*/-->
     <title>Cars Catalog</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
-<body ng-app="app" ng-controller="IndexController as vm">
+<body>
 <div th:replace="fragments/header :: header"/>
-<div>
-    <div class="row" style="margin-right: auto">
-        <div class="col-lg-offset-2 col-lg-8">
-            <div class="btn" role="group" style="margin-left: 160px">
-                <button ng-click="" type="button" class="btn btn-default">AUDI</button>
-                <button ng-click="" type="button" class="btn btn-default">BMW</button>
-                <button ng-click="" type="button" class="btn btn-default">TOYOTA</button>
-                <button ng-click="" type="button" class="btn btn-default">MAZDA</button>
-                <button ng-click="" type="button" class="btn btn-default">OPEL</button>
-                <button ng-click="" type="button" class="btn btn-default">MERCEDES</button>
-                <button ng-click="" type="button" class="btn btn-default">NISSAN</button>
-            </div>
-            <table class="table" style="margin-top: 10px">
-                <thead>
-                <tr>
-                    <th>Car</th>
-                    <th>Model</th>
-                    <th>Characteristics</th>
-                    <th>Price</th>
-                    <th style="width: 90px"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="cars">
-                    <td>{{repository.car}}</td>
-                    <td>{{repository.model}}</td>
-                    <td>{{repository.characteristics}}</td>
-                    <td>{{bookinrepository.price}}</td>
-                    <td>
-                        <button class="btn btn-danger" ng-click="vm.deleteCar(car.id)">Delete</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-
-        </div>
-    </div>
-</div>
+<!--/*@thymesVar id="cars" type="templates"*/-->
+<a th:text="${cars}"></a>
 <!--<div th:replace="fragments/footer :: footer"/>-->
 </body>
 </html>
