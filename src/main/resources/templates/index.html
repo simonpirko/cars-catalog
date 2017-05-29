@@ -1,14 +1,70 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <!--/*@thymesVar id="title" type="templates"*/-->
-    <title>Cars Catalog</title>
-    <div th:replace="fragments/header :: header-css"/>
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head lang="en">
+
+    <title th:text="${title}"></title>
+
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
 <body>
-<div th:replace="fragments/header :: header"/>
-<!--/*@thymesVar id="cars" type="templates"*/-->
-<a th:text="${cars}"></a>
-<!--<div th:replace="fragments/footer :: footer"/>-->
+
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(cars)}">
+        <table class="table table-striped">
+            <tr>
+                <th>Date</th>
+                <th>Mark</th>
+                <th>Model</th>
+                <th>Scope</th>
+                <th>Year</th>
+                <th>Mileage, km</th>
+                <th>Type</th>
+                <th>Price</th>
+            </tr>
+            <tr th:each="cars : ${cars}">
+                <td th:text="${cars.date}">Date</td>
+                <td th:text="${cars.mark}" th:href="${'/' + cars.id}">Mark</td>
+                <td th:text="${cars.model}">Model</td>
+                <td th:text="${cars.scope}">Scope</td>
+                <td th:text="${cars.year}">Year</td>
+                <td th:text="${cars.mileage}">Mileage</td>
+                <td th:text="${cars.transmission}">Type</td>
+                <td th:text="${cars.price}">Price</td>
+                <td><a th:href="${'car/' + cars.id}">View</a></td>
+                <td><a th:href="${'car/edit/' + cars.id}">Edit</a></td>
+                <td><a th:href="${'car/delete/' + cars.id}">Delete</a></td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div th:fragment='paginationbar' style="text-align: center">
+        <div>
+            <ul class='pagination pagination-centered'>
+                <li th:class="${page.firstPage}?'disabled':''">
+                    <span th:if='${page.firstPage}'>← First</span>
+                    <a th:if='${not page.firstPage}' th:href='@{${page.url}(page=0,size=${page.size})}'>← First</a>
+                </li>
+                <li th:class="${page.hasPreviousPage}? '' : 'disabled'">
+                    <span th:if='${not page.hasPreviousPage}'>«</span>
+                    <a th:if='${page.hasPreviousPage}' th:href='@{${page.url}(page=${page.number-2},size=${page.size})}' title='Go to previous page'>«</a>
+                </li>
+                <li th:each='item : ${page.items}' th:class="${item.current}? 'active' : ''">
+                    <span th:if='${item.current}' th:text='${item.number}'>1</span>
+                    <a th:if='${not item.current}' th:href='@{${page.url}(page=${item.number-1},size=${page.size})}'><span th:text='${item.number}'>1</span></a>
+                </li>
+                <li th:class="${page.hasNextPage}? '' : 'disabled'">
+                    <span th:if='${not page.hasNextPage}'>»</span>
+                    <a th:if='${page.hasNextPage}' th:href='@{${page.url}(page=${page.number},size=${page.size})}' title='Go to next page'>»</a>
+                </li>
+                <li th:class="${page.lastPage}? 'disabled' : ''">
+                    <span th:if='${page.lastPage}'>Last →</span>
+                    <a th:if='${not page.lastPage}' th:href='@{${page.url}(page=${page.totalPages - 1},size=${page.size})}'>Last →</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,28 +1,40 @@
 package com.carscatalog.controllers;
 
-import com.carscatalog.entity.DataCars;
-import com.carscatalog.repository.CarsRepository;
+import com.carscatalog.entity.Cars;
+import com.carscatalog.service.CarsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.transaction.Transactional;
-import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 @Controller
 public class IndexController {
-	@Autowired
-	private CarsRepository carsRepository;
 
-	@GetMapping("/")
-	@Transactional
-	public ModelAndView index() {
-		List<DataCars> dataCars = this.carsRepository.findAll();
-		ModelAndView modelAndView = new ModelAndView("index");
-		modelAndView.addObject("cars", dataCars);
-		return modelAndView;
+	private CarsService carsService;
+
+	@Autowired
+	public void setCarsService(CarsService carsService){
+		this.carsService = carsService;
+	}
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String list(Model model, Pageable pageable, Map<String, Object> map) {
+		Page<Cars> carsPage = carsService.findAll(pageable);
+		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/");
+		map.put("title", "Cars Catalog");
+		model.addAttribute("cars", page.getContent());
+		model.addAttribute("page",page);
+		return "index";
+	}
+
+	@RequestMapping("car/new")
+	public String newCar(Model model){
+		model.addAttribute("car", new Cars());
+		return "editcar";
 	}
 }
