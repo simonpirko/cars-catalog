@@ -11,9 +11,6 @@ public class Cars {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-//	@Version
-//	private Integer version;
-
 	private String model;
 	private String mark;
 	private Integer year;
@@ -23,7 +20,6 @@ public class Cars {
 	private String fuel;
 	private BigDecimal price;
 	private Date date;
-
 
 	public Long getId() {
 		return id;
@@ -40,14 +36,6 @@ public class Cars {
 	public void setModel(String model) {
 		this.model = model;
 	}
-
-//	public Integer getVersion() {
-//		return version;
-//	}
-//
-//	public void setVersion(Integer version) {
-//		this.version = version;
-//	}
 
 	public String getMark() {
 		return mark;
