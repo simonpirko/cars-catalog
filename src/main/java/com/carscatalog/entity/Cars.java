@@ -2,7 +2,7 @@ package com.carscatalog.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 public class Cars {
@@ -22,7 +22,7 @@ public class Cars {
 	private String transmission;
 	private String fuel;
 	private BigDecimal price;
-	private String date;
+	private Date date;
 
 
 	public Long getId() {
@@ -105,11 +105,11 @@ public class Cars {
 		this.price = price;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 }

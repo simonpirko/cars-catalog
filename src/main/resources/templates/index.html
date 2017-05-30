@@ -10,30 +10,29 @@
 
 <div class="container">
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
-    <div th:if="${not #lists.isEmpty(cars)}">
+    <div th:if="${not #lists.isEmpty(car)}">
         <table class="table table-striped">
             <tr>
-                <th>Date</th>
-                <th>Mark</th>
-                <th>Model</th>
-                <th>Scope</th>
-                <th>Year</th>
-                <th>Mileage, km</th>
-                <th>Type</th>
-                <th>Price</th>
+                <th><a th:href="${index}">Date</a></th>
+                <th><a th:href="${index}">Mark</a></th>
+                <th><a th:href="${index}">Model</a></th>
+                <th><a th:href="${index}">Scope</a></th>
+                <th><a th:href="${index}">Year</a></th>
+                <th><a th:href="${index}">Mileage, km</a></th>
+                <th><a th:href="${index}">Type</a></th>
+                <th><a th:href="${index}">Price, $</a></th>
+                <th><a th:href="${index}">View</a></th>
             </tr>
-            <tr th:each="cars : ${cars}">
-                <td th:text="${cars.date}">Date</td>
-                <td th:text="${cars.mark}" th:href="${'/' + cars.id}">Mark</td>
-                <td th:text="${cars.model}">Model</td>
-                <td th:text="${cars.scope}">Scope</td>
-                <td th:text="${cars.year}">Year</td>
-                <td th:text="${cars.mileage}">Mileage</td>
-                <td th:text="${cars.transmission}">Type</td>
-                <td th:text="${cars.price}">Price</td>
-                <td><a th:href="${'car/' + cars.id}">View</a></td>
-                <td><a th:href="${'car/edit/' + cars.id}">Edit</a></td>
-                <td><a th:href="${'car/delete/' + cars.id}">Delete</a></td>
+            <tr th:each="car : ${car}">
+                <td th:text="${car.date}">Date</td>
+                <td th:text="${car.mark}">Mark</td>
+                <td th:text="${car.model}">Model</td>
+                <td th:text="${car.scope}">Scope</td>
+                <td th:text="${car.year}">Year</td>
+                <td th:text="${car.mileage}">Mileage</td>
+                <td th:text="${car.transmission}">Type</td>
+                <td th:text="${car.price}">Price</td>
+                <td><a th:href="${'car/' + car.id}">Open</a></td>
             </tr>
         </table>
 
@@ -48,19 +47,28 @@
                 </li>
                 <li th:class="${page.hasPreviousPage}? '' : 'disabled'">
                     <span th:if='${not page.hasPreviousPage}'>«</span>
-                    <a th:if='${page.hasPreviousPage}' th:href='@{${page.url}(page=${page.number-2},size=${page.size})}' title='Go to previous page'>«</a>
+                    <a th:if='${page.hasPreviousPage}' th:href='@{${page.url}(page=${page.number-2},size=${page.size})}'
+                       title='Go to previous page'>«</a>
                 </li>
                 <li th:each='item : ${page.items}' th:class="${item.current}? 'active' : ''">
                     <span th:if='${item.current}' th:text='${item.number}'>1</span>
-                    <a th:if='${not item.current}' th:href='@{${page.url}(page=${item.number-1},size=${page.size})}'><span th:text='${item.number}'>1</span></a>
+                    <a th:if='${not item.current}'
+                       th:href='@{${page.url}(page=${item.number-1},size=${page.size})}'><span th:text='${item.number}'>1</span></a>
                 </li>
                 <li th:class="${page.hasNextPage}? '' : 'disabled'">
                     <span th:if='${not page.hasNextPage}'>»</span>
-                    <a th:if='${page.hasNextPage}' th:href='@{${page.url}(page=${page.number},size=${page.size})}' title='Go to next page'>»</a>
+                    <a th:if='${page.hasNextPage}' th:href='@{${page.url}(page=${page.number},size=${page.size})}'
+                       title='Go to next page'>»</a>
                 </li>
                 <li th:class="${page.lastPage}? 'disabled' : ''">
                     <span th:if='${page.lastPage}'>Last →</span>
-                    <a th:if='${not page.lastPage}' th:href='@{${page.url}(page=${page.totalPages - 1},size=${page.size})}'>Last →</a>
+                    <a th:if='${not page.lastPage}'
+                       th:href='@{${page.url}(page=${page.totalPages - 1},size=${page.size})}'>Last →</a>
+                </li>
+                <li th:class="${page.lastPage}? 'disabled' : ''">
+                    <span th:if='${page.lastPage}'>View 40</span>
+                    <a th:if='${not page.lastPage}'
+                       th:href='@{${page.url}(page=${page.totalPages - 1},size=${page.size})}'>View 40</a>
                 </li>
             </ul>
         </div>

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class Users implements Serializable {
+public class Users {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,30 +16,6 @@ public class Users implements Serializable {
 	private String city;
 	private Integer bornDate;
 	private Integer regDate;
-
-	protected Users() {
-	}
-
-	@Override
-	public String toString() {
-		return "Users{" +
-				", email='" + email + '\'' +
-				", firstName='" + firstName + '\'' +
-				", lastName='" + lastName + '\'' +
-				", city='" + city + '\'' +
-				", bornDate=" + bornDate +
-				", regDate=" + regDate +
-				'}';
-	}
-
-	public Users(String firstName, String lastName, String city, Integer bornDate, Integer regDate, String email) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.city = city;
-		this.bornDate = bornDate;
-		this.regDate = regDate;
-		this.email = email;
-	}
 
 	public Long getId() {
 		return id;

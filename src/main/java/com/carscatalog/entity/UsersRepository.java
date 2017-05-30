@@ -1,10 +1,7 @@
 package com.carscatalog.entity;
 
-import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
-
-
-public interface UsersRepository extends Repository<Users, Long> {
+public interface UsersRepository extends CrudRepository<Users, Long> {
 
 }

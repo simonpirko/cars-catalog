@@ -5,6 +5,7 @@ import com.carscatalog.entity.CarsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,11 +15,6 @@ public class CarsServiceImpl implements CarsService {
 	@Autowired
 	public void setCarsRepository(CarsRepository carsRepository) {
 		this.carsRepository = carsRepository;
-	}
-
-	@Override
-	public Iterable<Cars> listAllCars() {
-		return carsRepository.findAll();
 	}
 
 	@Override
