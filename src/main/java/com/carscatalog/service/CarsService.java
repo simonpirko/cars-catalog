@@ -9,9 +9,11 @@ import java.util.List;
 
 public interface CarsService {
 
-	Cars getCarsById(Long id);
 
-	Cars saveCars(Cars cars);
+
+	Cars getCarById(Long id);
+
+	Cars saveCar(Cars cars);
 
 	void deleteCar(Long id);
 

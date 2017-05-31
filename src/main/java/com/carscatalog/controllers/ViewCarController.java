@@ -20,24 +20,24 @@ public class ViewCarController {
 
 	@RequestMapping("car/{id}")
 	public String showCar(@PathVariable Long id, Model model) {
-		model.addAttribute("car", carsService.getCarsById(id));
+		model.addAttribute("car", carsService.getCarById(id));
 		return "viewcar";
 	}
 
 	@RequestMapping("car/edit/{id}")
 	public String editCar(@PathVariable Long id, Model model) {
-		model.addAttribute("car", carsService.getCarsById(id));
+		model.addAttribute("car", carsService.getCarById(id));
 		return "editcar";
 	}
 
 	@RequestMapping(value = "car", method = RequestMethod.POST)
-	public String saveCars(Cars cars){
-		carsService.saveCars(cars);
+	public String saveCar(Cars cars){
+		carsService.saveCar(cars);
 		return "redirect:/car/" + cars.getId();
 	}
 
 	@RequestMapping("car/delete/{id}")
-	public String delete(@PathVariable Long id){
+	public String deleteCar(@PathVariable Long id){
 		carsService.deleteCar(id);
 		return "redirect:/";
 	}

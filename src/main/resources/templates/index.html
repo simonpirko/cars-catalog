@@ -11,8 +11,8 @@
 <div class="container">
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
     <div th:if="${not #lists.isEmpty(car)}">
-        <table class="table table-striped">
-            <tr>
+        <table class="table table-hover">
+            <tr class="active">
                 <th><a th:href="${index}">Date</a></th>
                 <th><a th:href="${index}">Mark</a></th>
                 <th><a th:href="${index}">Model</a></th>

@@ -13,17 +13,17 @@ public class CarsServiceImpl implements CarsService {
 	private CarsRepository carsRepository;
 
 	@Autowired
-	public void setCarsRepository(CarsRepository carsRepository) {
+	public void setCarRepository(CarsRepository carsRepository) {
 		this.carsRepository = carsRepository;
 	}
 
 	@Override
-	public Cars getCarsById(Long id) {
+	public Cars getCarById(Long id) {
 		return carsRepository.findOne(id);
 	}
 
 	@Override
-	public Cars saveCars(Cars cars) {
+	public Cars saveCar(Cars cars) {
 		return carsRepository.save(cars);
 	}
 
