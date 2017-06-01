@@ -25,14 +25,75 @@ public class IndexController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String list(Model model, Pageable pageable, Sort sort) {
+	public String sortDate(Model model, Pageable pageable) {
 		model.addAttribute("title", "Cars Catalog");
-		Page<Cars> carsPage = carsService.findAll(pageable);
+		Page<Cars> carsPage = carsService.findAllByOrderByDateDesc(pageable);
 		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/");
-		model.addAttribute("car", page.getContent());
+		model.addAttribute("car", carsPage.getContent());
 		model.addAttribute("page", page);
 		return "index";
 	}
+
+	@RequestMapping(value = "/sortmark", method = RequestMethod.GET)
+	public String sortMark(Model model, Pageable pageable) {
+		model.addAttribute("title", "Cars Catalog");
+		Page<Cars> carsPage = carsService.findAllByOrderByMarkAsc(pageable);
+		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/sortmark");
+		model.addAttribute("car", carsPage.getContent());
+		model.addAttribute("page", page);
+		return "index";
+	}
+
+	@RequestMapping(value = "/sortscope", method = RequestMethod.GET)
+	public String sortScope(Model model, Pageable pageable) {
+		model.addAttribute("title", "Cars Catalog");
+		Page<Cars> carsPage = carsService.findAllByOrderByScopeAsc(pageable);
+		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/sortscope");
+		model.addAttribute("car", carsPage.getContent());
+		model.addAttribute("page", page);
+		return "index";
+	}
+
+	@RequestMapping(value = "/sortyear", method = RequestMethod.GET)
+	public String sortYear(Model model, Pageable pageable) {
+		model.addAttribute("title", "Cars Catalog");
+		Page<Cars> carsPage = carsService.findAllByOrderByYearAsc(pageable);
+		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/sortyear");
+		model.addAttribute("car", carsPage.getContent());
+		model.addAttribute("page", page);
+		return "index";
+	}
+
+	@RequestMapping(value = "/sortmileage", method = RequestMethod.GET)
+	public String sortMileage(Model model, Pageable pageable) {
+		model.addAttribute("title", "Cars Catalog");
+		Page<Cars> carsPage = carsService.findAllByOrderByMileageAsc(pageable);
+		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/sortmileage");
+		model.addAttribute("car", carsPage.getContent());
+		model.addAttribute("page", page);
+		return "index";
+	}
+
+	@RequestMapping(value = "/sortprice", method = RequestMethod.GET)
+	public String sortPrice(Model model, Pageable pageable) {
+		model.addAttribute("title", "Cars Catalog");
+		Page<Cars> carsPage = carsService.findAllByOrderByPriceAsc(pageable);
+		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/sortprice");
+		model.addAttribute("car", carsPage.getContent());
+		model.addAttribute("page", page);
+		return "index";
+	}
+
+//	@RequestMapping(value = "/mark", method = RequestMethod.GET)
+//	public String filterAudi(Model model, Pageable pageable) {
+//		model.addAttribute("title", "Cars Catalog");
+//		Page<Cars> carsPage = carsService.findAllByMark(mark, pageable);
+//		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/mark");
+//		model.addAttribute("markA",mark);
+//		model.addAttribute("car", carsPage.getContent());
+//		model.addAttribute("page", page);
+//		return "index";
+//	}
 
 	@RequestMapping("car/new")
 	public String newCar(Model model) {

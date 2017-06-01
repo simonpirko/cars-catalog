@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CarsServiceImpl implements CarsService {
 	private CarsRepository carsRepository;
@@ -15,6 +17,46 @@ public class CarsServiceImpl implements CarsService {
 	@Autowired
 	public void setCarRepository(CarsRepository carsRepository) {
 		this.carsRepository = carsRepository;
+	}
+
+//	@Override
+//	public Page<Cars> findAll(Pageable pageable) {
+//		return carsRepository.findAll(pageable);
+//	}
+
+	@Override
+	public Page<Cars> findAllByOrderByDateDesc(Pageable pageable) {
+		return carsRepository.findAllByOrderByDateDesc(pageable);
+	}
+
+	@Override
+	public Page<Cars> findAllByOrderByMarkAsc(Pageable pageable) {
+		return carsRepository.findAllByOrderByMarkAsc(pageable);
+	}
+
+	@Override
+	public Page<Cars> findAllByOrderByScopeAsc(Pageable pageable) {
+		return carsRepository.findAllByOrderByScopeAsc(pageable);
+	}
+
+	@Override
+	public Page<Cars> findAllByOrderByYearAsc(Pageable pageable) {
+		return carsRepository.findAllByOrderByYearAsc(pageable);
+	}
+
+	@Override
+	public Page<Cars> findAllByOrderByMileageAsc(Pageable pageable) {
+		return carsRepository.findAllByOrderByMileageAsc(pageable);
+	}
+
+	@Override
+	public Page<Cars> findAllByOrderByPriceAsc(Pageable pageable) {
+		return carsRepository.findAllByOrderByPriceAsc(pageable);
+	}
+
+	@Override
+	public Page<Cars> findAllByMark(String mark, Pageable pageable) {
+		return carsRepository.findAllByMark(mark, pageable);
 	}
 
 	@Override
@@ -30,10 +72,5 @@ public class CarsServiceImpl implements CarsService {
 	@Override
 	public void deleteCar(Long id) {
 		carsRepository.delete(id);
-	}
-
-	@Override
-	public Page<Cars> findAll(Pageable pageable) {
-		return carsRepository.findAll(pageable);
 	}
 }

@@ -9,8 +9,8 @@ public class Cars {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
 
+	private Long id;
 	private String model;
 	private String mark;
 	private Integer year;

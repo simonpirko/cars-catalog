@@ -11,14 +11,14 @@ import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import java.util.List;
 
 @Configuration
-//@EnableWebMvc
-//@ComponentScan(basePackages = "com.carscatalog")
+@EnableWebMvc
+@ComponentScan(basePackages = "com.carscatalog")
 public class WebPage extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
 		PageableHandlerMethodArgumentResolver resolver = new PageableHandlerMethodArgumentResolver();
-		resolver.setFallbackPageable(new PageRequest(0, 10));
+		resolver.setFallbackPageable(new PageRequest(0, 25));
 		argumentResolvers.add(resolver);
 		super.addArgumentResolvers(argumentResolvers);
 	}
