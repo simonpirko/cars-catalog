@@ -5,12 +5,27 @@
     <title th:text="${title}"></title>
 
     <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+
 </head>
 <body>
-
 <div class="container">
+    
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
     <div th:if="${not #lists.isEmpty(car)}">
+        <table class="table">
+            <tr>
+                <th><a th:href="@{/filter/AUDI}">AUDI</a></th>
+                <th><a th:href="@{/filter/BMW}">BMW</a></th>
+                <th><a th:href="@{/filter/CHEVROLET}">CHEVROLET</a></th>
+                <th><a th:href="@{/filter/DODGE}">DODGE</a></th>
+                <th><a th:href="@{/filter/MERCEDES}">MERCEDES</a></th>
+                <th><a th:href="@{/filter/NISSAN}">NISSAN</a></th>
+                <th><a th:href="@{/filter/OPEL}">OPEL</a></th>
+                <th><a th:href="@{/filter/RENAULT}">RENAULT</a></th>
+                <th><a th:href="@{/filter/TOYOTA}">TOYOTA</a></th>
+            </tr>
+        </table>
         <table class="table table-hover">
             <tr class="active">
                 <th>Date</th>

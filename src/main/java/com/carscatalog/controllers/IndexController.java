@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -84,16 +85,15 @@ public class IndexController {
 		return "index";
 	}
 
-//	@RequestMapping(value = "/mark", method = RequestMethod.GET)
-//	public String filterAudi(Model model, Pageable pageable) {
-//		model.addAttribute("title", "Cars Catalog");
-//		Page<Cars> carsPage = carsService.findAllByMark(mark, pageable);
-//		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/mark");
-//		model.addAttribute("markA",mark);
-//		model.addAttribute("car", carsPage.getContent());
-//		model.addAttribute("page", page);
-//		return "index";
-//	}
+	@RequestMapping(value = "**/filter/{mark}", method = RequestMethod.GET)
+	public String filterMark(@PathVariable String mark, Model model, Pageable pageable) {
+		model.addAttribute("title", "Cars Catalog");
+		Page<Cars> carsPage = carsService.findAllByMark(mark, pageable);
+		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/filter/{mark}");
+		model.addAttribute("car", carsPage.getContent());
+		model.addAttribute("page", page);
+		return "index";
+	}
 
 	@RequestMapping("car/new")
 	public String newCar(Model model) {
