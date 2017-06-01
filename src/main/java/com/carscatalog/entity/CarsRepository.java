@@ -6,8 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CarsRepository extends CrudRepository<Cars, Long> {
 
-//	Page<Cars> findAll(Pageable pageable);
-
 	Page<Cars> findAllByOrderByDateDesc(Pageable pageable);
 
 	Page<Cars> findAllByOrderByMarkAsc(Pageable pageable);

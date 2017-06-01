@@ -5,11 +5,10 @@ import com.carscatalog.entity.CarsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
+@Transactional
 @Service
 public class CarsServiceImpl implements CarsService {
 	private CarsRepository carsRepository;
@@ -18,11 +17,6 @@ public class CarsServiceImpl implements CarsService {
 	public void setCarRepository(CarsRepository carsRepository) {
 		this.carsRepository = carsRepository;
 	}
-
-//	@Override
-//	public Page<Cars> findAll(Pageable pageable) {
-//		return carsRepository.findAll(pageable);
-//	}
 
 	@Override
 	public Page<Cars> findAllByOrderByDateDesc(Pageable pageable) {
