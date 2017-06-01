@@ -13,8 +13,8 @@
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 
     <div th:if="${not #lists.isEmpty(car)}">
-        <table class="table">
-            <tr>
+        <table class="table" style="font-family: Tahoma">
+            <tr class="active">
                 <th><a th:href="@{/filter/AUDI}">AUDI</a></th>
                 <th><a th:href="@{/filter/BMW}">BMW</a></th>
                 <th><a th:href="@{/filter/CHEVROLET}">CHEVROLET</a></th>
