@@ -4,7 +4,6 @@ import com.carscatalog.entity.Cars;
 import com.carscatalog.service.CarsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,13 +31,13 @@ public class ViewCarController {
 	}
 
 	@RequestMapping(value = "/car", method = RequestMethod.POST)
-	public String saveCar(Cars cars){
+	public String saveCar(Cars cars) {
 		carsService.saveCar(cars);
 		return "redirect:/car/" + cars.getId();
 	}
 
 	@RequestMapping("/car/delete/{id}")
-	public String deleteCar(@PathVariable Long id){
+	public String deleteCar(@PathVariable Long id) {
 		carsService.deleteCar(id);
 		return "redirect:/";
 	}

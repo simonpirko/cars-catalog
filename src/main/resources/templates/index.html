@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head lang="en">
-
     <title th:text="${title}"></title>
-
     <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
-
 </head>
 <body>
 <div class="container">
-    
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
-
     <div th:if="${not #lists.isEmpty(car)}">
         <table class="table" style="font-family: Tahoma">
             <tr class="active">
@@ -50,9 +45,7 @@
                 <td><a th:href="${'car/' + car.id}">Open</a></td>
             </tr>
         </table>
-
     </div>
-
     <div th:fragment='paginationbar' style="text-align: center">
         <div>
             <ul class='pagination pagination-centered'>
@@ -86,6 +79,7 @@
             </ul>
         </div>
     </div>
+
 </div>
 </body>
 </html>

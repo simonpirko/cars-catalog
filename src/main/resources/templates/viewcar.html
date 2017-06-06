@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
-    <div th:if="${not #lists.isEmpty(car)}">
+    <div th:if="${#httpServletRequest.remoteUser}? 'null'">
         <table class="table" style="text-align: center">
             <tr th:each="car : ${car}">
                 <td><a class="btn btn-default" th:href="${'edit/' + car.id}">Edit</a></td>

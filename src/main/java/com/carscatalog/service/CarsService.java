@@ -1,15 +1,14 @@
 package com.carscatalog.service;
 
 import com.carscatalog.entity.Cars;
+import com.sun.jndi.toolkit.dir.SearchFilter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-import java.util.List;
+import java.sql.Date;
 
 public interface CarsService {
-
-//	Page<Cars> findAll(Pageable pageable);
 
 	Page<Cars> findAllByOrderByDateDesc(Pageable pageable);
 

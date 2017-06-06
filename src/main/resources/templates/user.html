@@ -1,18 +1,36 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!--/*@thymesVar id="title" type="templates"*/-->
-    <title th:text="${title}"></title>
-    <div th:replace="fragments/header :: header-css"/>
+
+    <title></title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
 <body>
-<div th:replace="fragments/header :: header"/>
+<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 <div class="container">
-
+    <form th:action="@{/logout}" method="get">
+        <button class="btn btn-md btn-danger btn-block" name="registration"
+                type="Submit">Logout</button>
+    </form>
     <div class="starter-template">
-       <h1 style="text-align: center" th:text="'Welcome, '+${#httpServletRequest.remoteUser}+'!'"></h1>
+       <h3 style="text-align: center" th:text="'Welcome, '+${#httpServletRequest.remoteUser}+'!'"></h3>
+    </div>
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <span th:utext="${userName}"></span>
+                <span th:utext="${userName}"></span>
+                <span th:utext="${userName}"></span>
+                <span th:utext="${userName}"></span>
+                <span th:utext="${userName}"></span>
+            </div>
+            <div class="panel-body">
+
+            </div>
+            <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+        </div>
     </div>
 </div>
-<!--<div th:replace="fragments/footer :: footer"/>-->
+
 </body>
 </html>

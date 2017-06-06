@@ -2,11 +2,16 @@ package com.carscatalog.service;
 
 import com.carscatalog.entity.Cars;
 import com.carscatalog.entity.CarsRepository;
+import com.sun.jndi.toolkit.dir.SearchFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.Date;
 
 @Transactional
 @Service
@@ -16,11 +21,6 @@ public class CarsServiceImpl implements CarsService {
 	@Autowired
 	public void setCarRepository(CarsRepository carsRepository) {
 		this.carsRepository = carsRepository;
-	}
-
-	@Override
-	public Page<Cars> findAllByOrderByDateDesc(Pageable pageable) {
-		return carsRepository.findAllByOrderByDateDesc(pageable);
 	}
 
 	@Override
@@ -51,6 +51,12 @@ public class CarsServiceImpl implements CarsService {
 	@Override
 	public Page<Cars> findAllByMark(String mark, Pageable pageable) {
 		return carsRepository.findAllByMark(mark, pageable);
+	}
+
+
+	@Override
+	public Page<Cars> findAllByOrderByDateDesc(Pageable pageable) {
+		return carsRepository.findAllByOrderByDateDesc(pageable);
 	}
 
 	@Override
