@@ -20,7 +20,7 @@ public class Cars {
 	private String fuel;
 	private BigDecimal price;
 	private Date date;
-//	private String imgURL;
+	private String URL;
 
 	public Long getId() {
 		return id;
@@ -102,11 +102,11 @@ public class Cars {
 		this.date = date;
 	}
 
-//	public String getImgURL() {
-//		return imgURL;
-//	}
-//
-//	public void setImgURL(String imgURL) {
-//		this.imgURL = imgURL;
-//	}
+	public String getURL() {
+		return URL;
+	}
+
+	public void setURL(String URL) {
+		this.URL = URL;
+	}
 }

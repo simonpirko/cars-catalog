@@ -18,39 +18,39 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class Security extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-	@Qualifier("dataSource")
-	@Autowired
-	private DataSource dataSource;
-
-	@Value("${spring.queries.users-query}")
-	private String usersQuery;
-
-	@Value("${spring.queries.roles-query}")
-	private String rolesQuery;
-
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth)
-			throws Exception {
-		auth.
-				jdbcAuthentication()
-				.usersByUsernameQuery(usersQuery)
-				.authoritiesByUsernameQuery(rolesQuery)
-				.dataSource(dataSource)
-				.passwordEncoder(bCryptPasswordEncoder);
-	}
-
 //	@Autowired
-//	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//	private BCryptPasswordEncoder bCryptPasswordEncoder;
 //
-//		auth
-//				.inMemoryAuthentication()
-//				.withUser("user").password("password").roles("USER")
-//				.and()
-//				.withUser("admin").password("password").roles("ADMIN");
+//	@Qualifier("dataSource")
+//	@Autowired
+//	private DataSource dataSource;
+//
+//	@Value("${spring.queries.users-query}")
+//	private String usersQuery;
+//
+//	@Value("${spring.queries.roles-query}")
+//	private String rolesQuery;
+//
+//	@Override
+//	protected void configure(AuthenticationManagerBuilder auth)
+//			throws Exception {
+//		auth.
+//				jdbcAuthentication()
+//				.usersByUsernameQuery(usersQuery)
+//				.authoritiesByUsernameQuery(rolesQuery)
+//				.dataSource(dataSource)
+//				.passwordEncoder(bCryptPasswordEncoder);
 //	}
+
+	@Autowired
+	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+		auth
+				.inMemoryAuthentication()
+				.withUser("user").password("password").roles("USER")
+				.and()
+				.withUser("admin").password("password").roles("ADMIN");
+	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
