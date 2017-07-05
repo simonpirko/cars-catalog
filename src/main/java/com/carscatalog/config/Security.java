@@ -32,10 +32,10 @@ public class Security extends WebSecurityConfigurerAdapter {
 	private String rolesQuery;
 
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth)
-			throws Exception {
-		auth.
-				jdbcAuthentication()
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+		auth
+				.jdbcAuthentication()
 				.usersByUsernameQuery(usersQuery)
 				.authoritiesByUsernameQuery(rolesQuery)
 				.dataSource(dataSource)
@@ -61,7 +61,8 @@ public class Security extends WebSecurityConfigurerAdapter {
 				.antMatchers("/login").permitAll()
 				.antMatchers("/registration").permitAll()
 				.antMatchers("/car/{id}").permitAll()
-				.antMatchers("/{mark}").permitAll()
+				.antMatchers("/mark/{mark}/**").permitAll()
+				.antMatchers("/sort/**").permitAll()
 				.antMatchers("/user/**").hasAuthority("ADMIN").anyRequest()
 				.authenticated().and().csrf().disable().formLogin()
 				.loginPage("/login").failureUrl("/login?error=true")

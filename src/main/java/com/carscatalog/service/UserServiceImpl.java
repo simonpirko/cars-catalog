@@ -12,8 +12,9 @@ import com.carscatalog.entity.Role;
 import com.carscatalog.entity.User;
 import com.carscatalog.entity.RoleRepository;
 import com.carscatalog.entity.UserRepository;
-import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 @Service("userService")
 public class UserServiceImpl implements UserService{
 
@@ -41,5 +42,4 @@ public class UserServiceImpl implements UserService{
 		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
 	}
-
 }

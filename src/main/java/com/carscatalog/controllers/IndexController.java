@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 @Controller
 public class IndexController {
@@ -31,61 +31,61 @@ public class IndexController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/sortmark", method = RequestMethod.GET)
+	@RequestMapping(value = "/sort/mark", method = RequestMethod.GET)
 	public String sortMark(Model model, Pageable pageable) {
 		model.addAttribute("title", "Cars Catalog");
 		Page<Cars> carsPage = carsService.findAllByOrderByMarkAsc(pageable);
-		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/sortmark");
+		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/sort/mark");
 		model.addAttribute("car", carsPage.getContent());
 		model.addAttribute("page", page);
 		return "index";
 	}
 
-	@RequestMapping(value = "/sortscope", method = RequestMethod.GET)
+	@RequestMapping(value = "/sort/scope", method = RequestMethod.GET)
 	public String sortScope(Model model, Pageable pageable) {
 		model.addAttribute("title", "Cars Catalog");
 		Page<Cars> carsPage = carsService.findAllByOrderByScopeAsc(pageable);
-		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/sortscope");
+		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/sort/scope");
 		model.addAttribute("car", carsPage.getContent());
 		model.addAttribute("page", page);
 		return "index";
 	}
 
-	@RequestMapping(value = "/sortyear", method = RequestMethod.GET)
+	@RequestMapping(value = "/sort/year", method = RequestMethod.GET)
 	public String sortYear(Model model, Pageable pageable) {
 		model.addAttribute("title", "Cars Catalog");
 		Page<Cars> carsPage = carsService.findAllByOrderByYearAsc(pageable);
-		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/sortyear");
+		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/sort/year");
 		model.addAttribute("car", carsPage.getContent());
 		model.addAttribute("page", page);
 		return "index";
 	}
 
-	@RequestMapping(value = "/sortmileage", method = RequestMethod.GET)
+	@RequestMapping(value = "/sort/mileage", method = RequestMethod.GET)
 	public String sortMileage(Model model, Pageable pageable) {
 		model.addAttribute("title", "Cars Catalog");
 		Page<Cars> carsPage = carsService.findAllByOrderByMileageAsc(pageable);
-		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/sortmileage");
+		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/sort/mileage");
 		model.addAttribute("car", carsPage.getContent());
 		model.addAttribute("page", page);
 		return "index";
 	}
 
-	@RequestMapping(value = "/sortprice", method = RequestMethod.GET)
+	@RequestMapping(value = "/sort/price", method = RequestMethod.GET)
 	public String sortPrice(Model model, Pageable pageable) {
 		model.addAttribute("title", "Cars Catalog");
 		Page<Cars> carsPage = carsService.findAllByOrderByPriceAsc(pageable);
-		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/sortprice");
+		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/sort/price");
 		model.addAttribute("car", carsPage.getContent());
 		model.addAttribute("page", page);
 		return "index";
 	}
 
-	@RequestMapping(value = "/{mark}", method = RequestMethod.GET)
+	@RequestMapping(value = "/mark/{mark}", method = RequestMethod.GET)
 	public String filterMark(@PathVariable String mark, Model model, Pageable pageable) {
 		model.addAttribute("title", "Cars Catalog");
 		Page<Cars> carsPage = carsService.findAllByMark(mark, pageable);
-		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/{mark}");
+		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/mark/{mark}");
 		model.addAttribute("car", carsPage.getContent());
 		model.addAttribute("page", page);
 		return "index";

@@ -22,7 +22,7 @@ public class UserController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
 		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
+		modelAndView.addObject("adminMessage","Welcome to carscatalog!");
 		modelAndView.setViewName("user");
 		return modelAndView;
 	}

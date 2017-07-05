@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-
-    <title th:text="${'Edit car: ' + car.mark + car.model}"></title>
-
+    <title th:text="${'Edit car: '+car.mark+car.model}"></title>
     <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
 <body>
+<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 <div class="container">
-    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
-    <div>
-        <form class="form-horizontal" th:object="${car}" th:action="@{/car}" method="post">
+    <div style="left: inherit">
+        <form class="form-horizontal" th:name="uploadingForm" enctype="multipart/form-data" th:object="${car}"
+              th:action="@{/car}" method="post">
             <input type="hidden" th:field="*{id}"/>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Date:</label>
@@ -51,31 +50,69 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Fuel:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{fuel}"/>
+                    <select class="form-control" th:field="*{fuel}">
+                        <option type="text" value="Benzin">Benzin</option>
+                        <option type="text" value="Diesel">Diesel</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Transmission:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{transmission}"/>
+                    <select class="form-control" th:field="*{transmission}">
+                        <option type="text" value="Auto">Auto</option>
+                        <option type="text" value="Manual">Manual</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">Price:</label>
+                <label class="col-sm-2 control-label">Price, $:</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" th:field="*{price}"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">Image:</label>
+                <label class="col-sm-2 control-label">Image 1:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{URL}"/>
+                    <input type="file" class="form-control" th:name="uploadingFiles"/>
                 </div>
             </div>
-            <form method="POST" action="/editcar" enctype="multipart/form-data">
-                <input type="file" name="file" th:field="*{URL}" /><br/><br/>
-                <input type="submit" value="Submit" />
-            </form>
+            <!--<div class="form-group">-->
+            <!--<label class="col-sm-2 control-label">Image 2:</label>-->
+            <!--<div class="col-sm-10">-->
+            <!--<input type="file" name="uploadingFiles"/>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+            <!--<label class="col-sm-2 control-label">Image 3:</label>-->
+            <!--<div class="col-sm-10">-->
+            <!--<input type="file" name="uploadingFiles"/>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+            <!--<label class="col-sm-2 control-label">Image 4:</label>-->
+            <!--<div class="col-sm-10">-->
+            <!--<input type="file" name="uploadingFiles"/>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+            <!--<label class="col-sm-2 control-label">Image 2:</label>-->
+            <!--<div class="col-sm-10">-->
+            <!--<input type="file" class="form-control" th:field="*{IMG2}"/>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+            <!--<label class="col-sm-2 control-label">Image 3:</label>-->
+            <!--<div class="col-sm-10">-->
+            <!--<input type="file" class="form-control" th:field="*{IMG3}"/>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+            <!--<label class="col-sm-2 control-label">Image 4:</label>-->
+            <!--<div class="col-sm-10">-->
+            <!--<input type="file" class="form-control" th:field="*{IMG4}"/>-->
+            <!--</div>-->
+            <!--</div>-->
             <div class="row" style="text-align: center">
                 <button type="submit" class="btn btn-default">OK</button>
             </div>

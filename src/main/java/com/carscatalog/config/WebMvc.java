@@ -13,5 +13,4 @@ public class WebMvc extends WebMvcConfigurerAdapter {
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 		return bCryptPasswordEncoder;
 	}
-
 }
