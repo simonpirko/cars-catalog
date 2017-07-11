@@ -73,9 +73,9 @@
                     <a th:if='${not page.lastPage}'
                        th:href='@{${page.url}(page=${page.totalPages - 1},size=${page.size})}'>Last →</a>
                 </li>
-                <li th:class="${page.lastPage}? 'disabled' : ''">
-                    <a th:href='@{${page.url}(page=${page.number - 1},size=${50})}'>View 50</a>
-                </li>
+                <!--<li th:class="${page.lastPage}? 'disabled' : ''">-->
+                    <!--<a th:href='@{${page.url}(page=${page.number - 1},size=${50})}'>View 50</a>-->
+                <!--</li>-->
             </ul>
         </div>
     </div>

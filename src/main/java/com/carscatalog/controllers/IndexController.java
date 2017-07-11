@@ -3,6 +3,7 @@ package com.carscatalog.controllers;
 import com.carscatalog.entity.Cars;
 import com.carscatalog.service.CarsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Predicate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Controller
 public class IndexController {
@@ -86,6 +88,16 @@ public class IndexController {
 		model.addAttribute("title", "Cars Catalog");
 		Page<Cars> carsPage = carsService.findAllByMark(mark, pageable);
 		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/mark/{mark}");
+		model.addAttribute("car", carsPage.getContent());
+		model.addAttribute("page", page);
+		return "index";
+	}
+
+	@RequestMapping(value = "/search/{q}", method = RequestMethod.GET)
+	public String search(@PathVariable("q") String mode, String mark, Model model, Pageable pageable) {
+		model.addAttribute("title", "Cars Catalog");
+		Page<Cars> carsPage = carsService.findByMarkAndModel(mark, mode, pageable);
+		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/search/{q}");
 		model.addAttribute("car", carsPage.getContent());
 		model.addAttribute("page", page);
 		return "index";

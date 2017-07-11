@@ -2,6 +2,7 @@ package com.carscatalog.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Blob;
 import java.sql.Date;
 
 @Entity
@@ -20,10 +21,17 @@ public class Cars {
 	private String fuel;
 	private BigDecimal price;
 	private Date date;
-	private String IMG1;
-	private String IMG2;
-	private String IMG3;
-	private String IMG4;
+
+	@Lob
+	private byte[] images;
+
+	public byte[] getImages() {
+		return images;
+	}
+
+	public void setImages(byte[] images) {
+		this.images = images;
+	}
 
 	public Long getId() {
 		return id;
@@ -105,35 +113,4 @@ public class Cars {
 		this.date = date;
 	}
 
-	public String getIMG1() {
-		return IMG1;
-	}
-
-	public void setIMG1(String IMG1) {
-		this.IMG1 = IMG1;
-	}
-
-	public String getIMG2() {
-		return IMG2;
-	}
-
-	public void setIMG2(String IMG2) {
-		this.IMG2 = IMG2;
-	}
-
-	public String getIMG3() {
-		return IMG3;
-	}
-
-	public void setIMG3(String IMG3) {
-		this.IMG3 = IMG3;
-	}
-
-	public String getIMG4() {
-		return IMG4;
-	}
-
-	public void setIMG4(String IMG4) {
-		this.IMG4 = IMG4;
-	}
 }

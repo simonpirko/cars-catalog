@@ -2,6 +2,7 @@ package com.carscatalog.service;
 
 import com.carscatalog.entity.Cars;
 import com.carscatalog.entity.CarsRepository;
+import com.sun.jndi.toolkit.dir.SearchFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -47,6 +48,12 @@ public class CarsServiceImpl implements CarsService {
 	public Page<Cars> findAllByMark(String mark, Pageable pageable) {
 		return carsRepository.findAllByMark(mark, pageable);
 	}
+
+	@Override
+	public Page<Cars> findByMarkAndModel(String mark, String model, Pageable pageable) {
+		return carsRepository.findByMarkAndModel(mark, model, pageable);
+	}
+
 
 	@Override
 	public Page<Cars> findAllByOrderByDateDesc(Pageable pageable) {

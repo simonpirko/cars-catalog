@@ -19,4 +19,6 @@ public interface CarsRepository extends CrudRepository<Cars, Long> {
 	Page<Cars> findAllByOrderByPriceAsc(Pageable pageable);
 
 	Page<Cars> findAllByMark(String mark, Pageable pageable);
+
+	Page<Cars> findByMarkAndModel(String mark, String model, Pageable pageable);
 }
