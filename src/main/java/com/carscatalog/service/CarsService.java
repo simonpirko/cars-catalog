@@ -1,12 +1,8 @@
 package com.carscatalog.service;
 
 import com.carscatalog.entity.Cars;
-import com.sun.jndi.toolkit.dir.SearchFilter;
-import org.springframework.cglib.core.Predicate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-import java.math.BigDecimal;
 
 public interface CarsService {
 

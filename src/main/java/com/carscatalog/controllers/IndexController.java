@@ -3,15 +3,11 @@ package com.carscatalog.controllers;
 import com.carscatalog.entity.Cars;
 import com.carscatalog.service.CarsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Predicate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 @Controller
 public class IndexController {

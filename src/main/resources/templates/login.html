@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
+<head lang="en">
+
     <title>LogIn | Cars Catalog</title>
+
     <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
 <body>
 <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
 <div class="container">
     <form th:action="@{/login}" method="POST" class="form-signin">
         <h3 class="form-signin-heading" th:text="Welcome"></h3>

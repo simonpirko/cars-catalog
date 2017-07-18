@@ -2,7 +2,6 @@ package com.carscatalog.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Blob;
 import java.sql.Date;
 
 @Entity
@@ -23,14 +22,15 @@ public class Cars {
 	private Date date;
 
 	@Lob
-	private byte[] images;
+	@Column(name = "IMAGE")
+	private byte[] image;
 
-	public byte[] getImages() {
-		return images;
+	public byte[] getImage() {
+		return image;
 	}
 
-	public void setImages(byte[] images) {
-		this.images = images;
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 
 	public Long getId() {
@@ -112,5 +112,4 @@ public class Cars {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
 }

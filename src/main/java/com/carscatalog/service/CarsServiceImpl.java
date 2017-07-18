@@ -2,7 +2,6 @@ package com.carscatalog.service;
 
 import com.carscatalog.entity.Cars;
 import com.carscatalog.entity.CarsRepository;
-import com.sun.jndi.toolkit.dir.SearchFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,19 +1,14 @@
 package com.carscatalog.config;
 
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 
 import java.util.List;
 
 @Configuration
-//@EnableWebMvc
-//@ComponentScan(basePackages = "com.carscatalog")
 public class WebPage extends WebMvcConfigurerAdapter {
 
 	@Override
@@ -23,11 +18,4 @@ public class WebPage extends WebMvcConfigurerAdapter {
 		argumentResolvers.add(resolver);
 		super.addArgumentResolvers(argumentResolvers);
 	}
-
-//	@Override
-//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//		registry.addResourceHandler("/images/**")
-//				.addResourceLocations("file:ext-resources/")
-//				.setCachePeriod(0);
-//	}
 }

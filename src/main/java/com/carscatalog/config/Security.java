@@ -42,16 +42,6 @@ public class Security extends WebSecurityConfigurerAdapter {
 				.passwordEncoder(bCryptPasswordEncoder);
 	}
 
-//	@Autowired
-//	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//
-//		auth
-//				.inMemoryAuthentication()
-//				.withUser("user").password("password").roles("USER")
-//				.and()
-//				.withUser("admin").password("password").roles("ADMIN");
-//	}
-
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
@@ -80,6 +70,6 @@ public class Security extends WebSecurityConfigurerAdapter {
 
 		web
 				.ignoring()
-				.antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+				.antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/webjars/**");
 	}
 }
