@@ -23,13 +23,13 @@ public class Cars {
 
 	@Lob
 	@Column(name = "IMAGE")
-	private byte[] image;
+	private String image;
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 

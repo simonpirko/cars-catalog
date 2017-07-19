@@ -76,17 +76,9 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label"></label>
                 <div class="col-sm-10">
-                    <img width="400px" th:src="${img}"/>
-                    <!--<a th:href="@{image}"><img width="400px" th:src="${image}"/></a>-->
-                    <!--<a th:href="${car.IMG3}"><img width="400px" th:src="${car.IMG3}"/></a>-->
-                    <!--<a th:href="${car.IMG4}"><img width="400px" th:src="${car.IMG4}"/></a>-->
-                </div>
-                <div th:if="${message}">
-                    <p th:text="${message}"></p>
+                    <img style="width: 400px" th:src="@{'data:image/jpeg;base64,'+${car.image}}"/>
                 </div>
             </div>
-            <!--<p th:text="${car.image}"></p>-->
-            <!--<p th:text="${img}"></p>-->
         </form>
     </div>
 </div>

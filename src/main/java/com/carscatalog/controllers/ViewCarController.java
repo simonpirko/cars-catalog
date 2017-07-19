@@ -7,11 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.Base64;
 
 @Controller
 public class ViewCarController {
@@ -25,8 +23,6 @@ public class ViewCarController {
 	@RequestMapping(value = "**/car/{id}", method = RequestMethod.GET)
 	public String showCar(@PathVariable Long id, Model model, Cars cars) throws IOException {
 		model.addAttribute("car", carsService.getCarById(id));
-		BufferedImage img = ImageIO.read(new ByteArrayInputStream(cars.getImage()));
-		model.addAttribute("img", img);
 		return "viewcar";
 	}
 
@@ -37,25 +33,18 @@ public class ViewCarController {
 	}
 
 	@RequestMapping(value = "**/car", method = RequestMethod.POST)
-	public String saveCar(@RequestParam("files") MultipartFile image, RedirectAttributes redirectAttributes, String type, Cars cars) throws IOException {
-		byte[] bytes = image.getBytes();
-		cars.setImage(bytes);
+	public String saveCar(@RequestParam("imageFile") MultipartFile imageFile, Cars cars) throws IOException {
 		try {
-			image.getBytes();
+			byte[] imgBytes = imageFile.getBytes();
+			byte[] encode = Base64.getEncoder().encode(imgBytes);
+			String base64 = new String(encode, "UTF-8");
+			cars.setImage(base64);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		carsService.saveCar(cars);
 		return "redirect:/car/" + cars.getId();
 	}
-
-//		if (image.hasTileWriters()) {
-//			redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-//			return "redirect:/car/edit/" + cars.getId();
-//		} else
-//				redirectAttributes.addFlashAttribute("message",
-//						"You successfully uploaded '" + files.getOriginalFilename() + "'");
-
 
 	@RequestMapping("**/car/delete/{id}")
 	public String deleteCar(@PathVariable Long id) {
