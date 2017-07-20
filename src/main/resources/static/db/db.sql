@@ -33,7 +33,7 @@ CREATE TABLE `cars` (
   `price`        DECIMAL(20, 2) DEFAULT 0 NOT NULL,
   `date`         DATE                              DEFAULT current_date(),
   `fuel`         VARCHAR(255),
-  `images`        BLOB,
+  `image`        BLOB,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
