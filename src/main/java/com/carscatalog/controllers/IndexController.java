@@ -89,8 +89,8 @@ public class IndexController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/search/{q}", method = RequestMethod.GET)
-	public String search(@PathVariable("q") String mode, String mark, Model model, Pageable pageable) {
+	@RequestMapping(value = "/search/**", method = RequestMethod.GET)
+	public String search(@RequestParam("search") String mode, String mark, Model model, Pageable pageable) {
 		model.addAttribute("title", "Cars Catalog");
 		Page<Cars> carsPage = carsService.findByMarkAndModel(mark, mode, pageable);
 		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/search/{q}");
