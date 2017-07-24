@@ -20,8 +20,6 @@ public interface CarsService {
 
 	Page<Cars> findAllByMark(String mark, Pageable pageable);
 
-	Page<Cars> findByMarkAndModel(String mark, String model, Pageable pageable);
-
 	Cars getCarById(Long id);
 
 	Cars saveCar(Cars cars);

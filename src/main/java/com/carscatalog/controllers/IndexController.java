@@ -3,11 +3,16 @@ package com.carscatalog.controllers;
 import com.carscatalog.entity.Cars;
 import com.carscatalog.service.CarsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class IndexController {
@@ -89,15 +94,16 @@ public class IndexController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/search/**", method = RequestMethod.GET)
-	public String search(@RequestParam("search") String mode, String mark, Model model, Pageable pageable) {
-		model.addAttribute("title", "Cars Catalog");
-		Page<Cars> carsPage = carsService.findByMarkAndModel(mark, mode, pageable);
-		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/search/{q}");
-		model.addAttribute("car", carsPage.getContent());
-		model.addAttribute("page", page);
-		return "index";
-	}
+//	@RequestMapping(value = "/search", method = RequestMethod.GET)
+//	public String search(@RequestParam(value = "search", required = false) String mark, Model model, Pageable pageable) {
+//		model.addAttribute("title", "Cars Catalog");
+//		ModelAndView mav = new ModelAndView("search");
+//		Page<Cars> carsPage = carsService.
+//		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/search/{q}");
+//		model.addAttribute("car", carsPage.getContent());
+//		model.addAttribute("page", page);
+//		return "index";
+//	}
 
 	@RequestMapping("/car/new")
 	public String newCar(Model model) {

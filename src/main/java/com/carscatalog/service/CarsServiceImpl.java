@@ -49,12 +49,6 @@ public class CarsServiceImpl implements CarsService {
 	}
 
 	@Override
-	public Page<Cars> findByMarkAndModel(String mark, String model, Pageable pageable) {
-		return carsRepository.findByMarkAndModel(mark, model, pageable);
-	}
-
-
-	@Override
 	public Page<Cars> findAllByOrderByDateDesc(Pageable pageable) {
 		return carsRepository.findAllByOrderByDateDesc(pageable);
 	}

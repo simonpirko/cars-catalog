@@ -21,7 +21,7 @@
                         <li th:if="${#httpServletRequest.remoteUser}?'null'"><a th:href="@{/car/new}">New Car</a></li>
                     </ul>
                 </div>
-                <form class="navbar-form navbar-right" role="search" th:action="@{/car}" th:object="${car}">
+                <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
                         <input class="form-control" type="search" name="search" placeholder="Search"/>
                     </div>
