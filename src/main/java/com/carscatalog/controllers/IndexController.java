@@ -1,18 +1,23 @@
 package com.carscatalog.controllers;
 
 import com.carscatalog.entity.Cars;
+import com.carscatalog.entity.CarsSpecification;
+import com.carscatalog.entity.Cars_;
 import com.carscatalog.service.CarsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.SetJoin;
+import java.util.List;
 
 @Controller
 public class IndexController {
@@ -94,16 +99,19 @@ public class IndexController {
 		return "index";
 	}
 
-//	@RequestMapping(value = "/search", method = RequestMethod.GET)
-//	public String search(@RequestParam(value = "search", required = false) String mark, Model model, Pageable pageable) {
-//		model.addAttribute("title", "Cars Catalog");
-//		ModelAndView mav = new ModelAndView("search");
-//		Page<Cars> carsPage = carsService.
-//		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/search/{q}");
-//		model.addAttribute("car", carsPage.getContent());
-//		model.addAttribute("page", page);
-//		return "index";
-//	}
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String search(@RequestParam(value = "q", required = false) String mark,
+						 @RequestParam(value = "q", required = false) String car,
+						 @RequestParam(value = "q", required = false) String fuel,
+						 @RequestParam(value = "q", required = false) String transmission,
+						 Pageable pageable, Model model) {
+		model.addAttribute("title", "Cars Catalog");
+		Page<Cars> carsPage = carsService.findByMarkOrModelOrFuelOrTransmission(mark,car,fuel,transmission,pageable);
+		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/**");
+		model.addAttribute("car", carsPage.getContent());
+		model.addAttribute("page", page);
+		return "index";
+	}
 
 	@RequestMapping("/car/new")
 	public String newCar(Model model) {

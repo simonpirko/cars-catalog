@@ -1,10 +1,15 @@
 package com.carscatalog.service;
 
+import antlr.StringUtils;
 import com.carscatalog.entity.Cars;
 import com.carscatalog.entity.CarsRepository;
+import com.carscatalog.entity.CarsSpecification;
+import com.carscatalog.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,6 +52,12 @@ public class CarsServiceImpl implements CarsService {
 	public Page<Cars> findAllByMark(String mark, Pageable pageable) {
 		return carsRepository.findAllByMark(mark, pageable);
 	}
+
+	@Override
+	public Page<Cars> findByMarkOrModelOrFuelOrTransmission(String mark, String model, String fuel, String transmission, Pageable pageable) {
+		return carsRepository.findByMarkOrModelOrFuelOrTransmission(mark, model, fuel, transmission, pageable);
+	}
+
 
 	@Override
 	public Page<Cars> findAllByOrderByDateDesc(Pageable pageable) {

@@ -1,8 +1,10 @@
 package com.carscatalog.service;
 
 import com.carscatalog.entity.Cars;
+import com.carscatalog.entity.CarsSpecification;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 
 public interface CarsService {
 
@@ -19,6 +21,8 @@ public interface CarsService {
 	Page<Cars> findAllByOrderByPriceAsc(Pageable pageable);
 
 	Page<Cars> findAllByMark(String mark, Pageable pageable);
+
+	Page<Cars> findByMarkOrModelOrFuelOrTransmission(String mark, String model, String fuel, String transmission, Pageable pageable);
 
 	Cars getCarById(Long id);
 

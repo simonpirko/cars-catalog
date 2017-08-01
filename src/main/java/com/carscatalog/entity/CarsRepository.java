@@ -1,13 +1,14 @@
 package com.carscatalog.entity;
 
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
 
-public interface CarsRepository extends CrudRepository<Cars, Long>, QueryByExampleExecutor<Cars> {
+public interface CarsRepository extends CrudRepository<Cars, Long>,
+		QueryByExampleExecutor<Cars>, JpaSpecificationExecutor<Cars> {
 
 	Page<Cars> findAllByOrderByDateDesc(Pageable pageable);
 
@@ -23,4 +24,8 @@ public interface CarsRepository extends CrudRepository<Cars, Long>, QueryByExamp
 
 	Page<Cars> findAllByMark(String mark, Pageable pageable);
 
+	Page<Cars> findByMarkOrModelOrFuelOrTransmission(String mark, String model, String fuel, String transmission, Pageable pageable);
 }
+
+
+
