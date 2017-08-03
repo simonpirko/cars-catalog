@@ -22,7 +22,7 @@ public interface CarsService {
 
 	Page<Cars> findAllByMark(String mark, Pageable pageable);
 
-	Page<Cars> findByMarkOrModelOrFuelOrTransmission(String mark, String model, String fuel, String transmission, Pageable pageable);
+	Page<Cars> findBy(String search, Pageable pageable);
 
 	Cars getCarById(Long id);
 

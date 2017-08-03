@@ -100,13 +100,10 @@ public class IndexController {
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String search(@RequestParam(value = "q", required = false) String mark,
-						 @RequestParam(value = "q", required = false) String car,
-						 @RequestParam(value = "q", required = false) String fuel,
-						 @RequestParam(value = "q", required = false) String transmission,
+	public String search(@RequestParam(value = "q", required = false) String search,
 						 Pageable pageable, Model model) {
 		model.addAttribute("title", "Cars Catalog");
-		Page<Cars> carsPage = carsService.findByMarkOrModelOrFuelOrTransmission(mark,car,fuel,transmission,pageable);
+		Page<Cars> carsPage = carsService.findBy(search, pageable);
 		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/**");
 		model.addAttribute("car", carsPage.getContent());
 		model.addAttribute("page", page);

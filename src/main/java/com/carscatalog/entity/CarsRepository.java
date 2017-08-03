@@ -24,7 +24,8 @@ public interface CarsRepository extends CrudRepository<Cars, Long>,
 
 	Page<Cars> findAllByMark(String mark, Pageable pageable);
 
-	Page<Cars> findByMarkOrModelOrFuelOrTransmission(String mark, String model, String fuel, String transmission, Pageable pageable);
+	Page<Cars> findAll(Specification<Cars> spec, Pageable pageable);
+
 }
 
 
