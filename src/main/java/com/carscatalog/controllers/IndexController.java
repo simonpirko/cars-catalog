@@ -4,7 +4,9 @@ import com.carscatalog.entity.Cars;
 import com.carscatalog.entity.CarsSpecification;
 import com.carscatalog.entity.Cars_;
 import com.carscatalog.service.CarsService;
+import org.aspectj.lang.annotation.RequiredTypes;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -12,11 +14,14 @@ import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.annotation.RequestScope;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NamedStoredProcedureQueries;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.SetJoin;
+import javax.xml.ws.RequestWrapper;
 import java.util.List;
 
 @Controller
@@ -100,10 +105,10 @@ public class IndexController {
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String search(@RequestParam(value = "q", required = false) String search,
+	public String search(@RequestParam(value = "q") String search,
 						 Pageable pageable, Model model) {
 		model.addAttribute("title", "Cars Catalog");
-		Page<Cars> carsPage = carsService.findBy(search, pageable);
+		Page<Cars> carsPage = carsService.findBy(search.toLowerCase(), pageable);
 		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/**");
 		model.addAttribute("car", carsPage.getContent());
 		model.addAttribute("page", page);

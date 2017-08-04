@@ -14,15 +14,15 @@
     <div th:if="${not #lists.isEmpty(car)}">
         <table class="table" style="font-family: Tahoma">
             <tr class="active">
-                <th><a th:href="@{/mark/AUDI}">AUDI</a></th>
-                <th><a th:href="@{/mark/BMW}">BMW</a></th>
-                <th><a th:href="@{/mark/CHEVROLET}">CHEVROLET</a></th>
-                <th><a th:href="@{/mark/DODGE}">DODGE</a></th>
-                <th><a th:href="@{/mark/MERCEDES}">MERCEDES</a></th>
-                <th><a th:href="@{/mark/NISSAN}">NISSAN</a></th>
-                <th><a th:href="@{/mark/OPEL}">OPEL</a></th>
-                <th><a th:href="@{/mark/RENAULT}">RENAULT</a></th>
-                <th><a th:href="@{/mark/TOYOTA}">TOYOTA</a></th>
+                <th><a th:href="@{/mark/audi}">AUDI</a></th>
+                <th><a th:href="@{/mark/bmw}">BMW</a></th>
+                <th><a th:href="@{/mark/chevrolet}">CHEVROLET</a></th>
+                <th><a th:href="@{/mark/dodge}">DODGE</a></th>
+                <th><a th:href="@{/mark/mercedes}">MERCEDES</a></th>
+                <th><a th:href="@{/mark/nissan}">NISSAN</a></th>
+                <th><a th:href="@{/mark/opel}">OPEL</a></th>
+                <th><a th:href="@{/mark/renault}">RENAULT</a></th>
+                <th><a th:href="@{/mark/toyota}">TOYOTA</a></th>
             </tr>
         </table>
         <table class="table table-hover">
@@ -39,12 +39,12 @@
             </tr>
             <tr th:each="car : ${car}">
                 <td th:text="${car.date}">Date</td>
-                <td th:text="${car.mark}">Mark</td>
-                <td th:text="${car.model}">Model</td>
+                <td style="text-transform: uppercase; font-weight: bold" th:text="${car.mark}">Mark</td>
+                <td style="text-transform: capitalize; font-weight: bold" th:text="${car.model}">Model</td>
                 <td th:text="${car.scope}">Scope</td>
                 <td th:text="${car.year}">Year</td>
                 <td th:text="${car.mileage}">Mileage</td>
-                <td th:text="${car.transmission}">Type</td>
+                <td style="text-transform: capitalize" th:text="${car.transmission}">Type</td>
                 <td th:text="${car.price}">Price</td>
                 <td><a th:href="${'car/' + car.id}">Open</a></td>
             </tr>

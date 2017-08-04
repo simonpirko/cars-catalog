@@ -2,6 +2,7 @@ package com.carscatalog.service;
 
 import com.carscatalog.entity.Cars;
 import com.carscatalog.entity.CarsRepository;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import static com.carscatalog.entity.CarsSpecification.markOrModelOrFuelOrTransmission;
+import static com.carscatalog.entity.CarsSpecification.yearOrMileage;
 
 @Transactional
 @Service
@@ -53,8 +55,13 @@ public class CarsServiceImpl implements CarsService {
 
 	@Override
 	public Page<Cars> findBy(String search, Pageable pageable) {
-		Specification<Cars> searchSpec = markOrModelOrFuelOrTransmission(search);
-		return carsRepository.findAll(searchSpec, pageable);
+//		Specification<Cars> searchResult;
+//		if(StringUtils.isNotBlank(search)){
+//			searchResult = yearOrMileage(searchInt);
+//		}else{
+		Specification<Cars> searchResult = markOrModelOrFuelOrTransmission(search);
+//		}
+		return carsRepository.findAll(searchResult, pageable);
 	}
 
 	@Override
