@@ -1,10 +1,8 @@
 package com.carscatalog.service;
 
 import com.carscatalog.entity.Cars;
-import com.carscatalog.entity.CarsSpecification;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 
 public interface CarsService {
 
