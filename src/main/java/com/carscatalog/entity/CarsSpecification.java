@@ -7,10 +7,11 @@ import javax.persistence.criteria.Predicate;
 public final class CarsSpecification {
 	public static Specification<Cars> markOrModelOrFuelOrTransmission(final String search) {
 		return (root, query, builder) -> {
-			Predicate markPredicate = builder.like(root.get(Cars_.mark), search);
-			Predicate modelPredicate = builder.like(root.get(Cars_.model), search);
-			Predicate fuelPredicate = builder.like(root.get(Cars_.fuel), search);
-			Predicate transmissionPredicate = builder.like(root.get(Cars_.transmission), search);
+			String content = getContainsLikePattern(search);
+			Predicate markPredicate = builder.like(root.get(Cars_.mark), content);
+			Predicate modelPredicate = builder.like(root.get(Cars_.model), content);
+			Predicate fuelPredicate = builder.like(root.get(Cars_.fuel), content);
+			Predicate transmissionPredicate = builder.like(root.get(Cars_.transmission), content);
 			return builder.or(markPredicate, modelPredicate, fuelPredicate, transmissionPredicate);
 		};
 	}
@@ -28,5 +29,14 @@ public final class CarsSpecification {
 			Predicate scopePredicate = builder.equal(root.get(Cars_.scope), searchDo);
 			return builder.or(scopePredicate);
 		};
+	}
+
+	private static String getContainsLikePattern(String searchTerm) {
+		if (searchTerm == null || searchTerm.isEmpty()) {
+			return "%";
+		}
+		else {
+			return "%" + searchTerm.toLowerCase() + "%";
+		}
 	}
 }

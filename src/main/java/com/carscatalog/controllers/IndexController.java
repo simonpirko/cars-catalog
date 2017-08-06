@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class IndexController {
 
@@ -94,7 +96,7 @@ public class IndexController {
 	public ModelAndView search(@RequestParam(value = "q", required = false) String search,
 							   Pageable pageable, ModelAndView modelAndView) {
 		modelAndView.addObject("title", "Cars Catalog");
-		Page<Cars> carsPage = carsService.findBy(search.toLowerCase(), pageable);
+		Page<Cars> carsPage = carsService.findBy(search, pageable);
 		PageWrapper<Cars> page = new PageWrapper<Cars>(carsPage, "/**");
 		modelAndView.addObject("car", carsPage.getContent());
 		modelAndView.addObject("page", page);
