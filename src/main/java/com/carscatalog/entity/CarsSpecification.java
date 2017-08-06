@@ -8,10 +8,10 @@ public final class CarsSpecification {
 	public static Specification<Cars> markOrModelOrFuelOrTransmission(final String search) {
 		return (root, query, builder) -> {
 			String content = getContainsLikePattern(search);
-			Predicate markPredicate = builder.like(root.get(Cars_.mark), content);
-			Predicate modelPredicate = builder.like(root.get(Cars_.model), content);
-			Predicate fuelPredicate = builder.like(root.get(Cars_.fuel), content);
-			Predicate transmissionPredicate = builder.like(root.get(Cars_.transmission), content);
+			Predicate markPredicate = builder.like(builder.lower(root.get(Cars_.mark)), content);
+			Predicate modelPredicate = builder.like(builder.lower(root.get(Cars_.model)), content);
+			Predicate fuelPredicate = builder.like(builder.lower(root.get(Cars_.fuel)), content);
+			Predicate transmissionPredicate = builder.like(builder.lower(root.get(Cars_.transmission)), content);
 			return builder.or(markPredicate, modelPredicate, fuelPredicate, transmissionPredicate);
 		};
 	}
@@ -34,8 +34,7 @@ public final class CarsSpecification {
 	private static String getContainsLikePattern(String searchTerm) {
 		if (searchTerm == null || searchTerm.isEmpty()) {
 			return "%";
-		}
-		else {
+		} else {
 			return "%" + searchTerm.toLowerCase() + "%";
 		}
 	}

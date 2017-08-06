@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import static com.carscatalog.entity.CarsSpecification.markOrModelOrFuelOrTransmission;
+import static com.carscatalog.entity.CarsSpecification.scope;
 import static com.carscatalog.entity.CarsSpecification.yearOrMileage;
 
 @Transactional
@@ -57,9 +58,10 @@ public class CarsServiceImpl implements CarsService {
 		Specification<Cars> searchResult;
 		if (search.matches("[-+]?\\d+")) {
 			searchResult = yearOrMileage(Integer.valueOf(search));
-		} else {
+		} else if (search.matches("[-+]?[0-9]*\\.d?[0-9]*")) {
+			searchResult = scope(Double.valueOf(search));
+		} else
 			searchResult = markOrModelOrFuelOrTransmission(search);
-		}
 		return carsRepository.findAll(searchResult, pageable);
 	}
 
