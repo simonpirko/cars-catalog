@@ -1,10 +1,24 @@
-# Cars Catalog
-###_Back-end_
-#####Java 1.8
-#####SpringBoot 1.5.3
-#####Spring Data JPA
-#####Spring Security
-#####Thymeleaf 3.0.7
-###_Front-end_
-#####Bootstrap
-#####JQuery
+Hello, my name Simon. Am a beginner Java developer. This is my firs project.
+# "WRITE"
+
+# Stack:
+-----------
+# Frontend:
+Bootstrap,
+Thymeleaf
+-----------
+# Backend:
+Spring Boot,
+Spring MVC,
+Spring Data JPA,
+Spring Security,
+Hibernate
+-----------
+# Database:
+H2
+-----------
+# Start:
+1. Clone to my project in repository https://github.com/sipi7github/cars-catalog
+2. Install H2 database
+3. run **$mvn spring-boot:run**
+4. Go to **localhost:8080**
