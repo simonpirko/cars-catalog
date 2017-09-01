@@ -1,5 +1,5 @@
 Hello, my name Simon. Am a beginner Java developer. This is my firs project.
-# "WRITE"
+# "Cars Catalog"
 
 # Stack:
 -----------
