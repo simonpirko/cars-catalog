@@ -6,8 +6,7 @@
 
 **Backend:** Spring Boot, Spring MVC, Spring Data JPA, Spring Security, Hibernate
 
-**Database:**
-H2
+**Database:** H2
 
 **Start:**
 1. Clone https://github.com/sipi7github/cars-catalog.git
