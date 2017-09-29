@@ -1,4 +1,4 @@
-*Hello, my name Simon. Am a beginner Java developer. This is my firs project.*
+*Hello, my name Simon. Am a beginner Java developer. This is my first project.*
 
 **Project:** Cars Catalog
 
