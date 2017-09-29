@@ -1,6 +1,3 @@
-*Hello, my name Simon. Am a beginner Java developer. This is my first project.*
-
-
 **Project:** Cars Catalog
 
 **Frontend:** Bootstrap, Thymeleaf
