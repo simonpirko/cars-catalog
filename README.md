@@ -1,16 +1,16 @@
 Hello, my name Simon. Am a beginner Java developer. This is my firs project.
 # "Cars Catalog"
-# Stack:
-Frontend:
+**Stack**:
+**Frontend**:
 Bootstrap,
 Thymeleaf
-Backend:
+**Backend**:
 Spring Boot,
 Spring MVC,
 Spring Data JPA,
 Spring Security,
 Hibernate
-Database:
+**Database**:
 H2
 # Start:
 1. Clone https://github.com/sipi7github/cars-catalog.git
