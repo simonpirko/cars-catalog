@@ -1,4 +1,4 @@
-**Project:** Car Service
+**Project:** Cars Catalog
 
 **Frontend:** Bootstrap, Thymeleaf
 
