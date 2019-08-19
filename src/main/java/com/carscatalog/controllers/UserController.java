@@ -16,13 +16,13 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping(value="/user", method = RequestMethod.GET)
-	public ModelAndView homeUser(){
+	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	public ModelAndView homeUser() {
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
 		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-		modelAndView.addObject("adminMessage","Welcome to carscatalog!");
+		modelAndView.addObject("adminMessage", "Welcome to carscatalog!");
 		modelAndView.setViewName("user");
 		return modelAndView;
 	}
