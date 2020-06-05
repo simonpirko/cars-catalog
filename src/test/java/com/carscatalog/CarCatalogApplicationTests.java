@@ -10,7 +10,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {RepositoryConfigurationTest.class})
 @WebAppConfiguration
-public class CarsCatalogApplicationTests {
+public class CarCatalogApplicationTests {
 
 	@Test
 	public void contextLoads() {

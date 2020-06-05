@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cars`
+-- Table structure for table `car`
 --
 
-DROP TABLE IF EXISTS `cars`;
+DROP TABLE IF EXISTS `car`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cars` (
+CREATE TABLE `car` (
   `id`           BIGINT                   NOT NULL AUTO_INCREMENT,
   `mark`         VARCHAR(255)             NOT NULL,
   `model`        VARCHAR(255)             NOT NULL,

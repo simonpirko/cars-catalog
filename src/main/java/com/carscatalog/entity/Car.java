@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 @Entity
-public class Cars {
+public class Car {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

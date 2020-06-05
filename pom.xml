@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.</groupId>
-    <artifactId>cars-catalog</artifactId>
+    <artifactId>car-catalog</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>cars-catalog</name>
+    <name>car-catalog</name>
     <description>Cars Catalog</description>
 
     <parent>

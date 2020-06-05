@@ -18,18 +18,19 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class Security extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-	@Qualifier("dataSource")
-	@Autowired
-	private DataSource dataSource;
+	private final BCryptPasswordEncoder bCryptPasswordEncoder;
+	private final DataSource dataSource;
 
 	@Value("${spring.queries.users-query}")
 	private String usersQuery;
 
 	@Value("${spring.queries.roles-query}")
 	private String rolesQuery;
+
+	public Security(BCryptPasswordEncoder bCryptPasswordEncoder, @Qualifier("dataSource") DataSource dataSource) {
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+		this.dataSource = dataSource;
+	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -44,7 +45,6 @@ public class Security extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-
 		http
 				.authorizeRequests()
 				.antMatchers("/").permitAll()
